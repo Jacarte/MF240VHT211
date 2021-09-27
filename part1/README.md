@@ -1,3 +1,10 @@
+# Ukrainian Blackout
+## Preparation
+- [ESET report](https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf)
+- [The malware](https://bestsecuritysearch.com/industroyer-malware-also-known-crash-override-stuxnets-successor/)
+- [Stuxnet successor](https://www.welivesecurity.com/2017/06/19/industroyer-interview-ics-developed-decades-ago-no-security-mind/)
+- [Industrial Integrity controls](https://www.welivesecurity.com/2017/06/19/industroyer-interview-ics-developed-decades-ago-no-security-mind/)
+
 # Assignment
 ## Theory
 The assignment corresponds to:
