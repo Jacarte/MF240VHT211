@@ -10,10 +10,10 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
     - [1901-1925) (assignee)
     - [1925-1949) (assignee)
     - [1949-1973) (assignee)
-    - [1973-1997) (assignee)
+    - [1973-1997) (Shamoona)
     - [1997-)     (assignee) 
 - How does the framework relate to the 4+1 principles of assurance?
-  - Framework for 4+1
+  Framework for 4+1
    - Requirement to be defined
    - Decomposition of higher level requirements into lower level requirements
    - Requirements should be satisfied
