@@ -6,7 +6,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
 
 (Possibly together with others) Study the framework given to you, and put together a 25-minute presentation, emphasising:
 - What is the history of the framework (who put it together and why)?
-  - TODO: Go from 20 to 20 years in the history, each period corresponds to a team member
+  - TODO: Go from 24 to 24 years in the history, each period corresponds to a team member
     - [1901-1925) (assignee)
     - [1925-1949) (assignee)
     - [1949-1973) (assignee)
