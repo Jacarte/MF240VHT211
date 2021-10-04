@@ -15,7 +15,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
     - [SP 800-82 Rev. 2](https://csrc.nist.gov/publications/detail/sp/800-82/rev-2/final)
 - How does the framework relate to the 4+1 principles of assurance?
   Framework for 4+1
-   - Requirement to be defined
+   - Requirement to be defined (Kostas)
    - Decomposition of higher level requirements into lower level requirements (Javier)
    - Requirements should be satisfied (Shamoona)
    - Controll the undesireable consequences - How important it is to meet (Marcus)
