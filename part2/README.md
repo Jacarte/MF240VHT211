@@ -18,7 +18,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
   Framework for 4+1
    - Requirement to be defined
    - Decomposition of higher level requirements into lower level requirements
-   - Requirements should be satisfied
+   - Requirements should be satisfied (Shamoona)
    - Controll the undesireable consequences- How important it is to meet
    - How srtingent it is to meet them 
 - Is it implicit or explicit?
