@@ -10,7 +10,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
 - What is the history of the framework (who put it together and why)?
   - TODO: Go from 24 to 24 years in the history, each period corresponds to a team member
     - [1901-1925) (assignee)
-    - [1925-1949) (assignee)
+    - [1925-1949) (Javier)
     - [1949-1973) (assignee)
     - [1973-1997) (Shamoona)
     - [1997-)     (assignee) 
