@@ -1,5 +1,7 @@
 ## Part 2 Theory
 
+### Deadline October 12nd at 18:00
+
 National Institute of Standards and Technology [NIST](https://www.nist.gov/timeline#event-774241)
 
 1. For the first part of the seminar day:
