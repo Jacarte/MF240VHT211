@@ -8,7 +8,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
 
 (Possibly together with others) Study the framework given to you, and put together a 25-minute presentation, emphasising:
 - What is the history of the framework (who put it together and why)?
-  - TODO: Go from 24 to 24 years in the history, each period corresponds to a team member
+  - Read the framework history and provide a summary/details
     - [NISTIR 6859](https://csrc.nist.gov/publications/detail/nistir/6859/archive/2002-02-28)
     - [SP 800-82](https://csrc.nist.gov/publications/detail/sp/800-82/archive/2011-06-09)
     - [SP 800-82 Rev. 1](https://csrc.nist.gov/publications/detail/sp/800-82/rev-1/archive/2013-05-14)
