@@ -16,7 +16,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
 - How does the framework relate to the 4+1 principles of assurance?
   Framework for 4+1
    - Requirement to be defined
-   - Decomposition of higher level requirements into lower level requirements
+   - Decomposition of higher level requirements into lower level requirements (Javier)
    - Requirements should be satisfied (Shamoona)
    - Controll the undesireable consequences - How important it is to meet (Marcus)
    - How srtingent it is to meet them (Kostas)
