@@ -22,4 +22,4 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
 - Is it implicit or explicit?
 - What are its special characteristics in comparison to other frameworks?
 
-You hand in the presentation here in a PPTx format, with what you aim to say during the presentation in the notes to each slide. 
+You hand in the presentation [here](https://canvas.kth.se/courses/30073/assignments/176442) in a PPTx format, with what you aim to say during the presentation in the notes to each slide. 
