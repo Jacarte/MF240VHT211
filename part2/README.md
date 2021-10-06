@@ -22,5 +22,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
    - How important it is to meet? How srtingent it is to meet them (Kostas)
 - Is it implicit or explicit?
 - What are its special characteristics in comparison to other frameworks?
+   - [ISO 26262 (Road vehicles - Functional safety)](https://kaf.canvas.kth.se/browseandembed/index/media-redirect/entryid/0_6hoghtyc/showDescription/false/showTitle/false/showTags/false/showDuration/false/showOwner/false/showUploadDate/false/playerSize/608x402/playerSkin/23449749/thumbEmbed//autoPlay//startTime//endTime/)
+   - [MIL-STD-882E](https://canvas.kth.se/courses/30073/files/4585842/download?download_frd=1)
 
 You hand in the presentation [here](https://canvas.kth.se/courses/30073/assignments/176442) in a PPTx format, with what you aim to say during the presentation in the notes to each slide. 
