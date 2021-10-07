@@ -20,7 +20,7 @@ National Institute of Standards and Technology [NIST](https://www.nist.gov/timel
    - Requirements should be satisfied (Shamoona)
    - Controll the undesireable consequences (Marcus)
    - How important it is to meet? How srtingent it is to meet them (Kostas)
-- Is it implicit or explicit?
+- Is it implicit or explicit? (Marcus)
 - What are its special characteristics in comparison to other frameworks?
    - [ISO 26262 (Road vehicles - Functional safety)](https://kaf.canvas.kth.se/browseandembed/index/media-redirect/entryid/0_6hoghtyc/showDescription/false/showTitle/false/showTags/false/showDuration/false/showOwner/false/showUploadDate/false/playerSize/608x402/playerSkin/23449749/thumbEmbed//autoPlay//startTime//endTime/)
    - [MIL-STD-882E](https://canvas.kth.se/courses/30073/files/4585842/download?download_frd=1)
