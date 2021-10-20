@@ -15,9 +15,10 @@
   - Bidou, R. (2005). Security operation center concepts & implementation.
   - Ebert, C., Gallardo, G., Hernantes, J., & Serrano, N. (2016). DevOps. IEEE Software, 33(3), 94-100.
   - Dang, Y., Lin, Q., & Huang, P. (2019, May). AIOps: real-world challenges and research innovations. In 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion) (pp. 4-5). IEEE.
-  - Ganame, A. K., Bourgeois, J., Bidou, R., & Spies, F. (2008). A global security architecture for intrusion detection on computer networks. computers & security, 27(1-2), 30-47.
-  - Ly, K., & Jin, Y. (2016, July). Security challenges in CPS and IoT: From end-node to the system. In 2016 IEEE Computer Society Annual Symposium on VLSI (ISVLSI) (pp. 63-68). IEEE.
-  - Chlosta, M., Rupprecht, D., Holz, T., & Pöpper, C. (2019, May). LTE security disabled: misconfiguration in commercial networks. In Proceedings of the 12th conference on security and privacy in wireless and mobile networks (pp. 261-266).
+  - Ganame, A. K., Bourgeois, J., Bidou, R., & Spies, F. (2008). A global security architecture for intrusion detection on computer networks. computers & security, 27(1-2), 30-47. 
+  - Ly, K., & Jin, Y. (2016, July). Security challenges in CPS and IoT: From end-node to the system. In 2016 IEEE Computer Society Annual Symposium on VLSI (ISVLSI) (pp. 63-68). IEEE. [Marcus]
+  - Chlosta, M., Rupprecht, D., Holz, T., & Pöpper, C. (2019, May). LTE security disabled: misconfiguration in commercial networks. In Proceedings of the 12th conference on security and privacy in wireless and mobile networks (pp. 261-266). [Marcus]
+
 
 
 
