@@ -12,12 +12,12 @@
   - [Module 1: What are threats and the four types of attack?](https://www.youtube.com/watch?v=5DNcj5NZIjo) 
   - [Basics of Intrusion Detection](https://www.youtube.com/watch?v=Kb4T2s2gdtM)
 - Two sources per group member (more can be found). Each source should be covered by at least one person
-  - Bidou, R. (2005). Security operation center concepts & implementation. [Javier]
+  - Bidou, R. (2005). Security operation center concepts & implementation (29 pages). [Javier]
   - Ebert, C., Gallardo, G., Hernantes, J., & Serrano, N. (2016). DevOps. IEEE Software, 33(3), 94-100. [Kostas] [Muhammed]
   - Dang, Y., Lin, Q., & Huang, P. (2019, May). AIOps: real-world challenges and research innovations. In 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion) (pp. 4-5). IEEE. [Shamoona] [Muhammed]
-  - Ganame, A. K., Bourgeois, J., Bidou, R., & Spies, F. (2008). A global security architecture for intrusion detection on computer networks. computers & security, 27(1-2), 30-47. [Shamoona] [Javier]
+  - Ganame, A. K., Bourgeois, J., Bidou, R., & Spies, F. (2008). A global security architecture for intrusion detection on computer networks. computers & security, 27(1-2), 30-47. [Shamoona]
   - Ly, K., & Jin, Y. (2016, July). Security challenges in CPS and IoT: From end-node to the system. In 2016 IEEE Computer Society Annual Symposium on VLSI (ISVLSI) (pp. 63-68). IEEE. [Marcus] [Kostas]
-  - Chlosta, M., Rupprecht, D., Holz, T., & Pöpper, C. (2019, May). LTE security disabled: misconfiguration in commercial networks. In Proceedings of the 12th conference on security and privacy in wireless and mobile networks (pp. 261-266). [Marcus]
+  - Chlosta, M., Rupprecht, D., Holz, T., & Pöpper, C. (2019, May). LTE security disabled: misconfiguration in commercial networks. In Proceedings of the 12th conference on security and privacy in wireless and mobile networks (pp. 261-266). [Marcus]  [Javier]
 
 
 
