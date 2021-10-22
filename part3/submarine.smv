@@ -1,0 +1,47 @@
+MODULE main
+VAR
+  surface:   { above, under };
+  hatch:   { open, close };
+  territory:   { friendly, enemy };
+  air_level: 0..100;
+
+ASSIGN
+  init (surface) := above;
+  next (surface) := case
+		    surface = above & hatch=close: {under, above};
+		    surface = under & territory=friendly: above;
+		    TRUE:                             surface;
+  esac;
+
+  init (hatch) := open;
+  next (hatch) := case
+		    surface = above: {open, close};
+		    -- surface = under: close;
+		    TRUE:            hatch;
+  esac;
+
+  init (territory) := friendly;
+  next (territory) := case
+		    surface = above: friendly;
+		    surface = under: {friendly, enemy};
+		    TRUE:            territory;
+  esac;
+
+  init (air_level) := 10;
+  next (air_level) := case
+       		    air_level>0: air_level - 1;
+		    TRUE:		 air_level;
+  esac;
+
+-- DEFINE
+--   emergency := (air_level=0);
+
+
+-- LTLSPEC
+-- 	G(surface=under -> F surface=above)
+	
+-- LTLSPEC -- Not working for some reason
+-- 	G(surface=under -> hatch=close)
+
+-- LTLSPEC
+-- 	G(territory=friendly & surface=above -> next(territory)=friendly)
