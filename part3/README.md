@@ -12,6 +12,7 @@
   - [Module 1: What are threats and the four types of attack?](https://www.youtube.com/watch?v=5DNcj5NZIjo) 
   - [Basics of Intrusion Detection](https://www.youtube.com/watch?v=Kb4T2s2gdtM)
 - Two sources per group member (more can be found). Each source should be covered by at least one person
+  - OWASP Top 10: A5 Security Misconfiguration [https://www.youtube.com/watch?v=ouuXu9_UM0w] [Marcus]
   - Bidou, R. (2005). Security operation center concepts & implementation (29 pages). [Javier]
   - Ebert, C., Gallardo, G., Hernantes, J., & Serrano, N. (2016). DevOps. IEEE Software, 33(3), 94-100. [Kostas] [Muhammed]
   - Dang, Y., Lin, Q., & Huang, P. (2019, May). AIOps: real-world challenges and research innovations. In 2019 IEEE/ACM 41st International Conference on Software Engineering: Companion Proceedings (ICSE-Companion) (pp. 4-5). IEEE. [Shamoona] [Muhammed]
