@@ -1,15 +1,56 @@
+MODULE emergency
+VAR
+  air_level: 0..100;
+  status: boolean;
+
+ASSIGN
+  init (air_level) := 100;
+  next(air_level) := case
+    air_level > 0: air_level - 1;
+    TRUE:     air_level;
+  esac;
+
+  init (status) := FALSE;
+  next(status) := case
+    air_level = 0: TRUE;
+    air_level > 0: FALSE;
+  esac;
+
+  -- Air level cannot be negative
+  LTLSPEC
+    G(air_level >= 0)
+
+  -- The alarm fires only when there is no oxygen
+  LTLSPEC
+    G (status = TRUE -> air_level = 0)
+
+MODULE Crew
+  VAR
+    role: {captain, sailor};
+
+  ASSIGN
+    init(role) := sailor;
+    next(role) := case
+      role : {captain, sailor}; -- random role
+    esac;
+
+  FAIRNESS
+    role = captain;
+  FAIRNESS
+    role = sailor;
+
 MODULE main
 VAR
   surface:   { above, under };
   hatch:   { open, close };
   territory:   { friendly, enemy };
-  air_level: 0..100;
+  alarm: emergency; --use alarm.status (boolean)
 
 ASSIGN
   init (surface) := above;
   next (surface) := case
 		    surface = above & hatch=close: {under, above};
-		    surface = under & territory=friendly: above;
+		    surface = under & territory=friendly: {under, above}; --added under here
 		    TRUE:                             surface;
   esac;
 
@@ -27,15 +68,16 @@ ASSIGN
 		    TRUE:            territory;
   esac;
 
-  init (air_level) := 10;
-  next (air_level) := case
-       		    air_level>0: air_level - 1;
-		    TRUE:		 air_level;
-  esac;
+-- === NOT NEEDED ANY MORE ===
+  -- init (air_level) := 10;
+  -- next (air_level) := case
+  --      		    air_level>0: air_level - 1;
+	-- 	    TRUE:		 air_level;
+  -- esac;
 
 -- DEFINE
 --   emergency := (air_level=0);
-
+-- === NOT NEEDED ANY MORE ===
 
 -- LTLSPEC
 -- 	G(surface=under -> F surface=above)
