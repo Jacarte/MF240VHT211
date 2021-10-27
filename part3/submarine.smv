@@ -1,9 +1,14 @@
+--The air_level and the surface_level do not have the same range of values
+--So the submarine can stay submerged for a longer period of time
+--submarine & enemy -> bigger surface level (Javier said he will add it in the slides!)
+
 MODULE emergency
 VAR
   air_level: 0..10;
   status: boolean;
 
 ASSIGN
+  -- initial status state depends on the air_level
   init (status) := case 
     air_level <= 5: TRUE;
     air_level > 5: FALSE;
@@ -28,28 +33,32 @@ MODULE Crew(surface, hatch, alarm, territory)
     surface_command : {no, up, down};
 
   ASSIGN
+    -- random role for the available crew member
     init(role) := {captain, sailor};
     next(role) := case
       TRUE : {captain, sailor}; -- random role
     esac;
 
+    -- there is always no hatch_command at the start; regardless of the state of the submarine
     init(hatch_command) := {no};
     next(hatch_command) := case
-      role = sailor & surface < 10 : {close, no};
-      role = sailor & hatch = open : {close, no};
+      role = sailor & surface < 10 : {close, no}; --only the sailor can given the hatch command
+      role = sailor & hatch = open : {close, no}; -- we have randomness in the sailors response
       role = sailor & hatch = close : {open, no};
       TRUE: no;
     esac;
 
+    -- there is aways surface_command at the start; regardless of the state of the submarine
     init(surface_command) := {no};
     next(surface_command) := case
-      alarm.status = TRUE & surface < 10: up;
-      role = captain & surface = 10 & territory = friendly: {down, no};
-      role = captain & surface = 10 & territory != friendly: down;
+      alarm.status = TRUE & surface < 10: up; --if there is an emergency anyone can surface the submarine
+      role = captain & surface = 10 & territory = friendly: {down, no}; --only the captain can order the surface command otherwise
+      role = captain & surface = 10 & territory != friendly: down; --enemy territory -> we can only go down
       role = captain & surface < 10 : {up, no};
       TRUE: no;
     esac;
 
+  -- all roles should be met
   FAIRNESS
     role = captain;
   FAIRNESS
@@ -58,6 +67,7 @@ MODULE Crew(surface, hatch, alarm, territory)
   -- Only the sailor can give the hatch command (the command applies in the next state)
   LTLSPEC
     G(X(hatch_command = close | hatch_command = open) -> role = sailor)
+
   -- The command to go up is given only by the captain or by everyone if the alarm is raised
   LTLSPEC
     G(X (surface_command = up) -> role = captain | alarm.status = TRUE)
@@ -72,24 +82,23 @@ VAR
   surface:   0..10;
   hatch:   { open, close };
   territory:   { friendly, enemy };
-  alarm: emergency; --use alarm.status (boolean)
-  order: Crew(surface, hatch, alarm, territory);
+  alarm: emergency;
+  order: Crew(surface, hatch, alarm, territory); --we pass the modules so we can reference them
 
 ASSIGN
-  init (surface) := 0..10; -- The reboot of the system works
+  --Surface = 10 means at the waterline level; lower than 10 means we are below
+  init (surface) := 0..10; -- Any surface level is possible; e.g., a reboot of the submarine
   next (surface) := case
-		    surface < 10 & alarm.status = TRUE: surface + 1;
-        surface > 0 & surface < 10 & territory=friendly & order.surface_command = no : surface;
+		    surface < 10 & alarm.status = TRUE: surface + 1; -- if there is an emergency always go up
+        surface > 0 & surface < 10 & territory=friendly & order.surface_command = no : surface; -- if we are below and in friendly territory follow the commnand
         surface > 0 & surface < 10 & territory=friendly & order.surface_command = up : surface + 1;
         surface > 0 & surface < 10 & territory=friendly & order.surface_command = down: surface - 1;
-        surface > 0 & surface < 10 & territory=friendly : {surface, surface - 1, surface + 1};
-        surface = 10 & order.surface_command = down & hatch = close : surface - 1; 
+        surface = 10 & order.surface_command = down & hatch = close : surface - 1;  --if we at surface and the commands are given, go down
         surface = 10 & order.surface_command = no : surface;
 		    TRUE:                             surface;
 
   esac;
-
-  init (hatch) := case
+  init (hatch) := case --random initialization but the hatch cannot start open when underneath; otherwise everyone is dead
     surface = 10: {open, close};
     surface < 10: {close};
   esac; 
@@ -106,10 +115,10 @@ ASSIGN
 		    TRUE:            territory;
   esac;
 
-  init (alarm.air_level) := 0..10; -- set to the maximum to have the full picture, lower to 5 for debugging reasons
+  init (alarm.air_level) := 0..10; -- air can be between 0-10
   next(alarm.air_level) := case
-    alarm.air_level > 0 & surface < 10 : alarm.air_level - 1;
-    surface = 10 & hatch = open: 10;
+    alarm.air_level > 0 & surface < 10 : alarm.air_level - 1; --below surface, remove one unit of air; notice that the number is not discrete in reality
+    surface = 10 & hatch = open: 10; --if above surface, air is replenished
     TRUE:     alarm.air_level;
   esac;
 
