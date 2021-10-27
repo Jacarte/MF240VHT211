@@ -49,6 +49,7 @@ VAR
 ASSIGN
   init (surface) := above;
   next (surface) := case
+		    alarm.status = TRUE: above;
 		    surface = above & next(hatch)=close: {under, above};
 		    surface = under & territory=friendly: {under, above}; --added under here
 		    TRUE:                             surface;
@@ -79,11 +80,12 @@ ASSIGN
 --   emergency := (air_level=0);
 -- === NOT NEEDED ANY MORE ===
 
--- LTLSPEC
--- 	G(surface=under -> F surface=above)
+LTLSPEC
+	G(surface=under -> F surface=above)
 	
 LTLSPEC -- Not working for some reason
 	G(surface=under -> hatch=close)
 
--- LTLSPEC
--- 	G(territory=friendly & surface=above -> next(territory)=friendly)
+LTLSPEC
+	G(territory=friendly & surface=above -> next(territory)=friendly)
+
