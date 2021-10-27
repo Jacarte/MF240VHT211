@@ -4,7 +4,7 @@ VAR
   status: boolean;
 
 ASSIGN
-  init (air_level) := 5;
+  init (air_level) := 5; -- set to the maximum to have the full picture, lower to 5 for debugging reasons
   next(air_level) := case
     air_level > 0: air_level - 1;
     TRUE:     air_level;
