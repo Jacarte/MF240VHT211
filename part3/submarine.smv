@@ -83,9 +83,12 @@ ASSIGN
 LTLSPEC
 	G(surface=under -> F surface=above)
 	
-LTLSPEC -- Not working for some reason
+LTLSPEC
 	G(surface=under -> hatch=close)
 
 LTLSPEC
 	G(territory=friendly & surface=above -> next(territory)=friendly)
+
+LTLSPEC
+	G(alarm.status -> next(surface)=above)
 
