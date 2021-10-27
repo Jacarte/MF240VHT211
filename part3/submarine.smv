@@ -4,7 +4,7 @@ VAR
   status: boolean;
 
 ASSIGN
-  init (air_level) := 100;
+  init (air_level) := 5;
   next(air_level) := case
     air_level > 0: air_level - 1;
     TRUE:     air_level;
@@ -49,7 +49,7 @@ VAR
 ASSIGN
   init (surface) := above;
   next (surface) := case
-		    surface = above & hatch=close: {under, above};
+		    surface = above & next(hatch)=close: {under, above};
 		    surface = under & territory=friendly: {under, above}; --added under here
 		    TRUE:                             surface;
   esac;
@@ -82,8 +82,8 @@ ASSIGN
 -- LTLSPEC
 -- 	G(surface=under -> F surface=above)
 	
--- LTLSPEC -- Not working for some reason
--- 	G(surface=under -> hatch=close)
+LTLSPEC -- Not working for some reason
+	G(surface=under -> hatch=close)
 
 -- LTLSPEC
 -- 	G(territory=friendly & surface=above -> next(territory)=friendly)
