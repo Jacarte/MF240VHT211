@@ -91,7 +91,4 @@ LTLSPEC
 LTLSPEC
 	G(territory=friendly & surface=10 -> next(territory)=friendly)
 
--- If emergency, i.e. no air, then next state should be surface
-LTLSPEC
-	G(alarm.status -> next(surface)=above)
 
