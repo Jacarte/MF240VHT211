@@ -69,23 +69,15 @@ ASSIGN
 		    TRUE:            territory;
   esac;
 
--- === NOT NEEDED ANY MORE ===
-  -- init (air_level) := 10;
-  -- next (air_level) := case
-  --      		    air_level>0: air_level - 1;
-	-- 	    TRUE:		 air_level;
-  -- esac;
-
--- DEFINE
---   emergency := (air_level=0);
--- === NOT NEEDED ANY MORE ===
-
+-- The submarine eventually goes to surface
 LTLSPEC
 	G(surface=under -> F surface=above)
-	
-LTLSPEC -- Not working for some reason
+
+-- The hatch is always close if the submarine is under surface
+LTLSPEC
 	G(surface=under -> hatch=close)
 
+-- If the submarine is at surface and it is in friendly territory, the inmediate location should be also in friendly territory
 LTLSPEC
 	G(territory=friendly & surface=above -> next(territory)=friendly)
 
