@@ -1,28 +1,27 @@
 MODULE emergency
 VAR
-  air_level: 0..100;
+  air_level: 0..10;
   status: boolean;
 
 ASSIGN
-  init (air_level) := 5; -- set to the maximum to have the full picture, lower to 5 for debugging reasons
-  next(air_level) := case
-    air_level > 0: air_level - 1;
-    TRUE:     air_level;
-  esac;
+  
 
-  init (status) := FALSE;
+  init (status) := case 
+    air_level <= 5: TRUE;
+    air_level > 5: FALSE;
+  esac;
   next(status) := case
-    air_level = 0: TRUE;
-    air_level > 0: FALSE;
+    air_level <= 5: TRUE;
+    air_level > 5: FALSE;
   esac;
-
+  
   -- Air level cannot be negative
   LTLSPEC
     G(air_level >= 0)
 
   -- The alarm fires only when there is no oxygen
   LTLSPEC
-    G (status = TRUE -> air_level = 0)
+    G (air_level < 5 -> status = TRUE)
 
 MODULE Crew
   VAR
@@ -41,43 +40,54 @@ MODULE Crew
 
 MODULE main
 VAR
-  surface:   { above, under };
+  surface:   0..10;
   hatch:   { open, close };
   territory:   { friendly, enemy };
   alarm: emergency; --use alarm.status (boolean)
 
 ASSIGN
-  init (surface) := above;
+  init (surface) := 0..10; -- The reboot of the system works
   next (surface) := case
-		    alarm.status = TRUE: above;
-		    surface = above & next(hatch)=close: {under, above};
-		    surface = under & territory=friendly: {under, above}; --added under here
+		    surface < 10 & alarm.status = TRUE: surface + 1;
+        surface > 0 & surface < 10 & territory=friendly : {surface, surface - 1, surface + 1}; --added under here
+		    surface = 10 & territory != friendly & alarm.status = FALSE & next(hatch) = close : surface - 1; -- If we reach enemy territory, then go down
+
 		    TRUE:                             surface;
   esac;
 
-  init (hatch) := open;
+  init (hatch) := case
+    surface = 10: {open, close};
+    surface < 10: {close};
+  esac; 
   next (hatch) := case
-		    surface = above: {open, close};
-		    -- surface = under: close;
+		    surface = 10: {open, close};
+		    surface < 10: close;
 		    TRUE:            hatch;
   esac;
 
-  init (territory) := friendly;
+  init (territory) := {friendly, enemy};
   next (territory) := case
-		    surface = above: friendly;
-		    surface = under: {friendly, enemy};
+		    surface = 10: friendly;
+		    surface < 10: {friendly, enemy};
 		    TRUE:            territory;
+  esac;
+
+  init (alarm.air_level) := 0..10; -- set to the maximum to have the full picture, lower to 5 for debugging reasons
+  next(alarm.air_level) := case
+    alarm.air_level > 0 & surface < 10 : alarm.air_level - 1;
+    surface = 10 & hatch = open: 10;
+    TRUE:     alarm.air_level;
   esac;
 
 -- The submarine eventually goes to surface
 LTLSPEC
-	G(surface=under -> F surface=above)
+	G(surface < 10 -> F surface = 10)
 
 -- The hatch is always close if the submarine is under surface
 LTLSPEC
-	G(surface=under -> hatch=close)
+	G(surface < 10 -> hatch=close)
 
 -- If the submarine is at surface and it is in friendly territory, the inmediate location should be also in friendly territory
 LTLSPEC
-	G(territory=friendly & surface=above -> next(territory)=friendly)
+	G(territory=friendly & surface=10 -> next(territory)=friendly)
 
