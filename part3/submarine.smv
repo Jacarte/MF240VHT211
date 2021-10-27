@@ -60,7 +60,11 @@ MODULE Crew(surface, hatch, alarm, territory)
     G(X(hatch_command = close | hatch_command = open) -> role = sailor)
   -- The command to go up is given only by the captain or by everyone if the alarm is raised
   LTLSPEC
-    G(X (surface_command = up | surface_command = down) -> role = captain | alarm.status = TRUE)
+    G(X (surface_command = up) -> role = captain | alarm.status = TRUE)
+
+  -- The down command can be given only by the captaun when the alarm is off
+  LTLSPEC
+    G(X (surface_command = down & alarm.status = FALSE) -> role = captain)
 
 
 MODULE main
