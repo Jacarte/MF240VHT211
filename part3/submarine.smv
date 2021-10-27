@@ -4,8 +4,6 @@ VAR
   status: boolean;
 
 ASSIGN
-  
-
   init (status) := case 
     air_level <= 5: TRUE;
     air_level > 5: FALSE;
@@ -23,14 +21,33 @@ ASSIGN
   LTLSPEC
     G (air_level < 5 -> status = TRUE)
 
-MODULE Crew
+MODULE Crew(surface, hatch, alarm, territory)
   VAR
     role: {captain, sailor};
+    hatch_command : {no, open, close};
+    surface_command : {no, up, down};
 
   ASSIGN
-    init(role) := sailor;
+    init(role) := {captain, sailor};
     next(role) := case
-      role : {captain, sailor}; -- random role
+      TRUE : {captain, sailor}; -- random role
+    esac;
+
+    init(hatch_command) := {no};
+    next(hatch_command) := case
+      role = sailor & surface < 10 : {close, no};
+      role = sailor & hatch = open : {close, no};
+      role = sailor & hatch = close : {open, no};
+      TRUE: no;
+    esac;
+
+    init(surface_command) := {no};
+    next(surface_command) := case
+      alarm.status = TRUE & surface < 10: up;
+      role = captain & surface = 10 & territory = friendly: {down, no};
+      role = captain & surface = 10 & territory != friendly: down;
+      role = captain & surface < 10 : {up, no};
+      TRUE: no;
     esac;
 
   FAIRNESS
@@ -38,21 +55,34 @@ MODULE Crew
   FAIRNESS
     role = sailor;
 
+  -- Only the sailor can give the hatch command (the command applies in the next state)
+  LTLSPEC
+    G(X(hatch_command = close | hatch_command = open) -> role = sailor)
+  -- The command to go up is given only by the captain or by everyone if the alarm is raised
+  LTLSPEC
+    G(X (surface_command = up | surface_command = down) -> role = captain | alarm.status = TRUE)
+
+
 MODULE main
 VAR
   surface:   0..10;
   hatch:   { open, close };
   territory:   { friendly, enemy };
   alarm: emergency; --use alarm.status (boolean)
+  order: Crew(surface, hatch, alarm, territory);
 
 ASSIGN
   init (surface) := 0..10; -- The reboot of the system works
   next (surface) := case
 		    surface < 10 & alarm.status = TRUE: surface + 1;
-        surface > 0 & surface < 10 & territory=friendly : {surface, surface - 1, surface + 1}; --added under here
-		    surface = 10 & territory != friendly & alarm.status = FALSE & next(hatch) = close : surface - 1; -- If we reach enemy territory, then go down
-
+        surface > 0 & surface < 10 & territory=friendly & order.surface_command = no : surface;
+        surface > 0 & surface < 10 & territory=friendly & order.surface_command = up : surface + 1;
+        surface > 0 & surface < 10 & territory=friendly & order.surface_command = down: surface - 1;
+        surface > 0 & surface < 10 & territory=friendly : {surface, surface - 1, surface + 1};
+        surface = 10 & order.surface_command = down & hatch = close : surface - 1; 
+        surface = 10 & order.surface_command = no : surface;
 		    TRUE:                             surface;
+
   esac;
 
   init (hatch) := case
@@ -60,8 +90,8 @@ ASSIGN
     surface < 10: {close};
   esac; 
   next (hatch) := case
-		    surface = 10: {open, close};
-		    surface < 10: close;
+        surface = 10 & order.hatch_command = no: hatch;
+        surface = 10 & order.hatch_command = close : close;
 		    TRUE:            hatch;
   esac;
 
