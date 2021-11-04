@@ -8,6 +8,7 @@
     - Prevent the fact that the scooter is abandon in arbitrary places
   - If the scooter is in a right place could be detected using the same geo system of the scooter or a composition of other sensors
     - Low resolution camera to detect bad behaviors
-    - Proximity sensors to identify safer places to leave the scooter, e.g. near a wall instead of in the middle of the side-walk     
+    - Proximity sensors to identify safer places to leave the scooter, e.g. near a wall instead of in the middle of the side-walk 
+    - Save the scooter where a "community" of scooters are, there is a high probability that where more scooters are together, more a safer place is    
   - Rental bikes example:
     - You need to leave it in a similar place from where you pick it in the first place
