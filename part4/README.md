@@ -12,3 +12,9 @@
     - Save the scooter where a "community" of scooters are, there is a high probability that where more scooters are together, more a safer place is    
   - Rental bikes example:
     - You need to leave it in a similar place from where you pick it in the first place
+  - Architecture of the company communication
+  - Discussions, debate:
+    - Techno social perspective, 
+    - How people behave with scooters
+    - Standards  
+    - How companies asses the regulations ?
