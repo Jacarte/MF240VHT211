@@ -8,4 +8,4 @@
     - Prevent the fact that the scooter is abandon in arbitrary places
   - If the scooter is in a right place could be detected using the same geo system of the scooter    
   - Rental bikes example:
-    - Leave it in a similar place  
+    - You need to leave it in a similar place from where you pick it in the first place
